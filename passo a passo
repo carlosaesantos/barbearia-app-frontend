@@ -1,0 +1,111 @@
+# NadeBarbers - Aplicativo de Agendamento para Barbearia (Versão Console com Card de Serviço)
+
+## Visão Geral
+
+Este é um aplicativo de console em Java para agendamento de serviços na barbearia NadeBarbers. Ele demonstra uma arquitetura básica Model-View-Controller (MVC) e introduz o conceito de um "card" textual para visualizar informações detalhadas sobre os serviços, incluindo um espaço reservado para uma imagem.
+
+**Funcionalidades:**
+
+* **Agendamento de Serviços:** Permite aos usuários agendar um corte de cabelo ou barba, fornecendo seus dados de contato e a data e hora desejadas.
+* **Listagem de Serviços com Card:** Exibe os serviços disponíveis. Para o "Corte de Cabelo", apresenta um formato de "card" no console, mostrando nome, preço, duração e um marcador para a imagem.
+* **Listagem de Agendamentos:** Exibe os agendamentos criados durante a sessão atual do aplicativo.
+
+**Observação:** Esta é uma aplicação de console para fins de demonstração. Os dados não são persistidos após o encerramento do programa e a exibição de imagens é simulada através de um placeholder textual.
+
+## Tecnologias
+
+* **Java:** Linguagem de programação principal.
+* **Gradle:** Ferramenta de automação de build.
+* **IntelliJ IDEA:** Ambiente de desenvolvimento integrado (IDE) recomendado.
+* **Java Time API:** Para manipulação de data e hora (`java.time`).
+
+## Estrutura do Projeto
+
+nadebarbers-v2/
+├── .gradle/             # Diretório do Gradle
+├── build/                # Diretório de build
+├── gradle/               # Wrapper do Gradle
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── nadebarbers/
+│                   ├── App.java           # Ponto de entrada da aplicação
+│                   ├── controller/
+│                   │   └── AgendamentoController.java # Lógica de agendamento
+│                   ├── model/
+│                   │   ├── Agendamento.java # Representação de um agendamento
+│                   │   ├── Cliente.java     # Representação de um cliente
+│                   │   └── Servico.java     # Representação de um serviço com caminho da imagem
+│                   └── view/
+│                       └── ConsoleView.java   # Interface de console do usuário
+├── build.gradle       # Arquivo de configuração do Gradle
+├── gradle.properties  # Propriedades do Gradle
+└── settings.gradle    # Define o nome do projeto
+
+
+## Pré-requisitos
+
+* **Java Development Kit (JDK):** Versão 8 ou superior instalada.
+* **Gradle:** (Opcional, o wrapper do Gradle no projeto será utilizado por padrão).
+* **IntelliJ IDEA:** (Recomendado para desenvolvimento e execução).
+
+## Como Executar
+
+### Usando IntelliJ IDEA
+
+1.  Abra o projeto `nadebarbers-v2` no IntelliJ IDEA.
+2.  Navegue até o arquivo `src/main/java/com/nadebarbers/App.java`.
+3.  Clique com o botão direito no arquivo ou dentro do método `main()` e selecione "Run 'App.main()'".
+4.  A aplicação será executada no console da IDE.
+
+### Usando Gradle (Linha de Comando)
+
+1.  Abra um terminal ou prompt de comando na raiz do diretório do projeto (`nadebarbers-v2`).
+2.  Execute o comando: `gradle run`
+3.  A aplicação será executada no console.
+
+## Funcionalidades Detalhadas
+
+1.  **Agendar Serviço:**
+    * O aplicativo solicitará o nome, telefone e e-mail do cliente.
+    * Será exibida uma lista de serviços disponíveis (Corte de Cabelo e Barba).
+    * O usuário deverá escolher um serviço.
+    * Será solicitado a data e hora desejadas para o agendamento (no formato `YYYY-MM-DD HH:mm`).
+    * Um novo agendamento será criado e uma mensagem de confirmação será exibida.
+
+2.  **Listar Serviços:**
+    * Esta opção exibirá os serviços disponíveis.
+    * Para o serviço de "Corte de Cabelo", as informações serão apresentadas em um formato de "card" textual, incluindo:
+        * Nome do Serviço
+        * Preço
+        * Duração
+        * Um placeholder: `Imagem: (Imagem do barbeiro cortando)` - indicando onde uma imagem seria mostrada em uma interface gráfica.
+    * Outros serviços também serão listados com suas informações básicas.
+
+3.  **Listar Agendamentos:**
+    * Esta opção mostrará todos os agendamentos que foram criados durante a execução atual do aplicativo, exibindo o ID do agendamento, o nome do cliente, o serviço agendado e a data/hora.
+
+4.  **Sair:**
+    * Encerra a execução do aplicativo.
+
+## Placeholder de Imagem no Card de Serviço
+
+A inclusão da linha `Imagem: (Imagem do barbeiro cortando)` no "card" do serviço de "Corte de Cabelo" serve como um marcador visual. Em uma aplicação com interface gráfica, o valor do atributo `imagemPath` da classe `Servico` ("corte.jpg" neste exemplo) seria utilizado para carregar e exibir a imagem correspondente ao serviço.
+
+## Próximos Passos e Melhorias Potenciais
+
+* **Implementação de Interface Gráfica (GUI):** Utilizar bibliotecas como JavaFX ou Swing para criar uma interface visual interativa, permitindo a exibição real das imagens dos serviços.
+* **Persistência de Dados:** Integrar um banco de dados (como SQLite, MySQL, PostgreSQL) ou utilizar arquivos para armazenar os dados de forma persistente, garantindo que as informações não sejam perdidas ao fechar o aplicativo.
+* **Validação de Entrada:** Adicionar validações para garantir que os dados fornecidos pelo usuário (datas, horários, etc.) estejam em formatos corretos.
+* **Tratamento de Erros:** Implementar um tratamento de exceções mais robusto para lidar com possíveis erros durante a execução do programa.
+* **Funcionalidades Adicionais:** Expandir o aplicativo com recursos como cancelamento de agendamentos, busca de agendamentos por cliente ou data, gerenciamento de horários disponíveis, e potencialmente, integração com um sistema de pagamento.
+* **Carregamento Dinâmico de Serviços e Imagens:** Ler as informações dos serviços e os caminhos das imagens de uma fonte externa (arquivo de configuração, banco de dados) em vez de codificá-los diretamente no código.
+
+
+
+
+
+
+
+O Gemini pode cometer erros, por iss
